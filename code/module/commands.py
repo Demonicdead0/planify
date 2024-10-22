@@ -4,11 +4,13 @@ def get_command() -> list:
     element.append('delete')
     element.append('show')
     element.append('planify')
+    element.append('exit')
     return element
 
 def len_command() -> str:
-    element: str = input()
+    element: str = input(">")
+    element = element.lower()
     for elemen in get_command():
-        if element == element:
+        if elemen == element:
             return element
     return "error"
