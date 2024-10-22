@@ -1,0 +1,22 @@
+{
+    "1" : {
+        "name": "High",
+        "value": 10
+    },
+    "2" : {
+        "name": "Medium",
+        "value": 6
+    },
+    "3" : {
+        "name": "Low",
+        "value": 3
+    },
+    "4" : {
+        "name": "Empty",
+        "value": 1
+    },
+    "5" : {
+        "name": "Funny",
+        "value": 0
+    }
+}
