@@ -1,4 +1,5 @@
 import datetime
+import json
 
 class task:
     idtask: int
@@ -19,6 +20,19 @@ class task:
         self.idtask = id
         self.create_task = datetime.datetime.today()
         self.name = name
+    
+    def save():
+        route: str = '../data/task.json'
+        settingroute: str = '../data/data.json'
+        data: json
+        setting: json
+        with open(route, encoding='utf8') as ruta:
+            data = json.load(ruta)
+
+        with open(settingroute, encoding='utf8') as source:
+            setting = json.load(source)
+        
+        data[setting['nro_task']] = {}
 
 class priority:
     idpriority: int

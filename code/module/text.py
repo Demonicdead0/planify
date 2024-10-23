@@ -15,3 +15,6 @@ def subtittle(string: str) -> None:
 
 def alert(string: str) -> None:
     print(f"{Fore.YELLOW} {string} {Style.RESET_ALL}")
+
+def success(string: str) -> None:
+    print(f"{Fore.GREEN} {string} {Style.RESET_ALL}" )

@@ -33,5 +33,9 @@ alert("no existe archivos json")
 # execute a loop
 while True:
     subtittle("Task")
-    command: str = len_command() 
-    pass
+    command, parameters  = len_command() 
+    if command == 'add':
+        get_command(command, parameters)
+    elif command == 'exit':
+        success("Saliendo del programa")
+        break

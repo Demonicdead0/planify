@@ -1,10 +1,13 @@
 import json
 
-route = "../../data/data.json"
+routedata: str = '../data/data.json'
+data: json
 
-data: json = json.load(route)
+with open(routedata, encoding='utf8') as ruta:
+    data = json.load(ruta)
 
-def get_command() -> list:
+
+def commands() -> list:
     element: list = []
     element.append('add')
     element.append('delete')
@@ -13,35 +16,25 @@ def get_command() -> list:
     element.append('exit')
     return element
 
-def len_command() -> str:
+def len_command() -> list:
     element: str = input(">")
     element = element.lower()
-    for elemen in get_command():
-        if elemen == element:
-            return element
-    return "error"
+    for elemen in commands():
+        if element.startswith(elemen):
+            return [elemen, element[len(elemen)+1:]]
+    return ["error",'0']
 
-def get_command(command: str):
-    element: dict = dict()
-    if command == 'add':
-        expression: str = command[3:]
-        pos: int = 0
-        while pos < (len(expression) - 2):
-            if expression[pos] == expression[pos+1] == "-":
-                littlecommand: str = ""
-                pos += 2
-                while pos < (len(expression) - 2) and expression[pos] != ':':
-                    littlecommand += expression[pos]
-                    pos += 1
-                pos += 1
-                text: str = ""
-                while (pos < (len(expression) - 2) and expression[pos] != '-'):
-                    text += expression[text]
-                    pos += 1
-                pos -= 1
-                if littlecommand == 'm:':
-                    element['idtask'] = data['nro_task']
-                    
+def get_parameters(command: str) -> list:
+    string: list = command.split(':')
+    parameters: list = []
+    for i in range(len(string)-1):
+        st: str = string[i].rsplit(' ',1)
+        parameters.extend(st)
+    parameters.append(string[-1])
 
+    return parameters
 
-            pos += 1
+def get_command(command: str, parameters: str) -> None:
+    message, *code = get_parameters(parameters)
+    print(message)
+    print(code)
